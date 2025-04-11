@@ -6,7 +6,7 @@ public class PlayerAnimator : MonoBehaviour
     private Animator animator;
     [SerializeField] private PlayerController player;
     
-    //Its better to just define a const string than writing the string over and over again. Can do a typo and compiler would never throw an error.
+    //It's better to just define a const string than writing the string over and over again. Can do a typo and compiler would never throw an error.
     private const string IS_WALKING ="IsWalking";
     private void Awake()
     {

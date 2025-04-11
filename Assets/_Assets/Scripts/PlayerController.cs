@@ -5,29 +5,13 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float rotationSpeed = 7f;
+    [SerializeField] private GameInput gameInput;
     private bool isWalking;
     private void Update()
     {
-        //reset it every update to not add up.
-        Vector2 inputVector = new Vector2(0, 0);
-        if(Input.GetKey(KeyCode.W))
-        {
-            inputVector.y = +1;
-        }
-
-        if (Input.GetKey(KeyCode.S))
-        {
-            inputVector.y = -1;
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            inputVector.x = -1;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            inputVector.x = +1;
-        }
-        inputVector = inputVector.normalized;
+        //GetMovementVectorNormalized just reads the values from PlayerInputActions and returns a normalized vector2
+        Vector2 inputVector = gameInput.GetMovementVectorNormalized();
+       
         //We don't want the character to move upwards in the world. So I construct a new vector that is 0 on the Y.
         Vector3 moveDir = new Vector3(inputVector.x * moveSpeed, 0, inputVector.y * moveSpeed);
         //Slerping the vector gives more natural rotation of character to move direction.
