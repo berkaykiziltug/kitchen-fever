@@ -11,6 +11,36 @@ public class PlayerController : MonoBehaviour
     
     private bool isWalking;
     private Vector3 lastInteractDir;
+
+    private void Start()
+    {
+        //Just subscribing to the event that is fired from GameInput class.
+        gameInput.onInteractPerformed += GameInput_OnInteractAction;
+    }
+
+    private void GameInput_OnInteractAction(object sender, EventArgs e)
+    {
+        Vector2 inputVector = gameInput.GetMovementVectorNormalized();
+        
+        Vector3 moveDir = new Vector3(inputVector.x , 0, inputVector.y );
+
+        //if the moveDir is not zero. Then lastInteractDir is last moveDir. This way player is not needed to keep pressing movement keys to interact. It will remember last interactDirection.
+        if (moveDir != Vector3.zero)
+        {
+            lastInteractDir = moveDir;
+        }
+        if (Physics.Raycast(transform.position, lastInteractDir, out RaycastHit hit, interactionDistance, countersLayerMask))
+        {
+            //Identify the hit object.
+            if (hit.transform.TryGetComponent(out ClearCounter clearCounter))
+            {
+                //Call the Interact method on the counter.
+                clearCounter.Interact();
+            }
+        }
+        
+    }
+
     private void Update()
     {
         HandleMovement();
@@ -34,7 +64,7 @@ public class PlayerController : MonoBehaviour
             if (hit.transform.TryGetComponent(out ClearCounter clearCounter))
             {
                 //Call the Interact method on the counter.
-                clearCounter.Interact();
+                // clearCounter.Interact();
             }
         }
         else
