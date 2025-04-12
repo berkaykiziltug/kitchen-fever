@@ -3,40 +3,51 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    
+    public static PlayerController Instance { get; private set; }
+    
+    public event EventHandler<OnSelectedCounterChangedEventArgs> OnSelectedCounterChanged;
+
+    //this is a class just to pass around ClearCounter data.
+    public class OnSelectedCounterChangedEventArgs : EventArgs
+    {
+        public ClearCounter selectedCounter;
+    }
+    
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float rotationSpeed = 7f;
     [SerializeField] private GameInput gameInput;
     [SerializeField] private float interactionDistance = 2f;
     [SerializeField] private LayerMask countersLayerMask;
     
+    private ClearCounter selectedCounter;
     private bool isWalking;
     private Vector3 lastInteractDir;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
 
     private void Start()
     {
         //Just subscribing to the event that is fired from GameInput class.
         gameInput.onInteractPerformed += GameInput_OnInteractAction;
     }
+    
 
     private void GameInput_OnInteractAction(object sender, EventArgs e)
     {
-        Vector2 inputVector = gameInput.GetMovementVectorNormalized();
-        
-        Vector3 moveDir = new Vector3(inputVector.x , 0, inputVector.y );
-
-        //if the moveDir is not zero. Then lastInteractDir is last moveDir. This way player is not needed to keep pressing movement keys to interact. It will remember last interactDirection.
-        if (moveDir != Vector3.zero)
+        if (selectedCounter != null)
         {
-            lastInteractDir = moveDir;
-        }
-        if (Physics.Raycast(transform.position, lastInteractDir, out RaycastHit hit, interactionDistance, countersLayerMask))
-        {
-            //Identify the hit object.
-            if (hit.transform.TryGetComponent(out ClearCounter clearCounter))
-            {
-                //Call the Interact method on the counter.
-                clearCounter.Interact();
-            }
+            selectedCounter.Interact();
         }
         
     }
@@ -63,14 +74,21 @@ public class PlayerController : MonoBehaviour
             //Identify the hit object.
             if (hit.transform.TryGetComponent(out ClearCounter clearCounter))
             {
-                //Call the Interact method on the counter.
-                // clearCounter.Interact();
+                if (clearCounter != selectedCounter)
+                {
+                    SetSelectedCounter(clearCounter);
+                }
+            }
+            else
+            {
+                SetSelectedCounter(null);
             }
         }
         else
         {
-            Debug.Log("------");
+            SetSelectedCounter(null);
         }
+
     }
 
     public bool IsWalking()
@@ -130,5 +148,12 @@ public class PlayerController : MonoBehaviour
             transform.position += moveDir*moveDistance;
         }
         isWalking = moveDir != Vector3.zero;
+    }
+
+    private void SetSelectedCounter(ClearCounter selectedCounter)
+    {
+        this.selectedCounter = selectedCounter;
+        //just firing the event and assigning selected counter inside the OnSelectedCounterChangedEventArgs' selected counter to the current selected counter so we can pass the selected counter to other classes.
+        OnSelectedCounterChanged?.Invoke(this, new OnSelectedCounterChangedEventArgs { selectedCounter = selectedCounter });
     }
 }
