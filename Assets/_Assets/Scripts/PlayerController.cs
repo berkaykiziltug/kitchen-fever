@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour , IKitchenObjectParent
     //this is a class just to pass around ClearCounter data.
     public class OnSelectedCounterChangedEventArgs : EventArgs
     {
-        public ClearCounter selectedCounter;
+        public BaseCounter selectedCounter;
     }
     
     
@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour , IKitchenObjectParent
     [SerializeField] private float interactionDistance = 2f;
     [SerializeField] private LayerMask countersLayerMask;
     
-    private ClearCounter selectedCounter;
+    private BaseCounter selectedCounter;
     private bool isWalking;
     private Vector3 lastInteractDir;
     private KitchenObject kitchenObject;
@@ -77,11 +77,11 @@ public class PlayerController : MonoBehaviour , IKitchenObjectParent
         if (Physics.Raycast(transform.position, lastInteractDir, out RaycastHit hit, interactionDistance, countersLayerMask))
         {
             //Identify the hit object.
-            if (hit.transform.TryGetComponent(out ClearCounter clearCounter))
+            if (hit.transform.TryGetComponent(out BaseCounter baseCounter))
             {
-                if (clearCounter != selectedCounter)
+                if (baseCounter != selectedCounter)
                 {
-                    SetSelectedCounter(clearCounter);
+                    SetSelectedCounter(baseCounter);
                 }
             }
             else
@@ -155,7 +155,7 @@ public class PlayerController : MonoBehaviour , IKitchenObjectParent
         isWalking = moveDir != Vector3.zero;
     }
 
-    private void SetSelectedCounter(ClearCounter selectedCounter)
+    private void SetSelectedCounter(BaseCounter selectedCounter)
     {
         this.selectedCounter = selectedCounter;
         //just firing the event and assigning selected counter inside the OnSelectedCounterChangedEventArgs' selected counter to the current selected counter so we can pass the selected counter to other classes.
