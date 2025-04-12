@@ -14,39 +14,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentVersion: 1.01
   subtype: kitchenchaos
-  lastShownTimestamp: 1744359087
+  lastShownTimestamp: 1744459539
   lastUpdateResponse:
-    version: 1.00
+    version: 1.01
     versionUrl: https://unitycodemonkey.com
-  checkedLastUpdateTimestamp: 1744359087
+  checkedLastUpdateTimestamp: 1744459539
   lastQOTDResponse:
-    questionId: 163
-    questionText: What is the purpose of Unity Hub?
-    answerA: Provide a space for the community to interact
-    answerB: Manage different Unity versions and Projects
-    answerC: Dashboard for Unity services
+    questionId: 169
+    questionText: 'What is the Color on the SpriteRenderer after running this code?
+
+      <p>Color
+      myColor = Color.red;</p>
+
+      <p>spriteRenderer.color = myColor;</p>
+
+      <p>myColor
+      = Color.blue;</p>'
+    answerA: Red
+    answerB: Blue
+    answerC: Don't Know
     answerD: 
     answerE: 
-  lastQotdTimestamp: 1744359087
+  lastQotdTimestamp: 1744459539
   lastDynamicHeaderResponse:
-    topImageUrl: https://codemonkeyexternal.blob.core.windows.net/external/Misc/humbleBundleSyntyMar25.png
-    topText: Make ANY game with these awesome Assets! (96% OFF ENDS SOON!)
-    topLink: humblebundle
+    topImageUrl: https://codemonkeyexternal.blob.core.windows.net/external/Misc/humbleBundleEnvironmentsApr25.png
+    topText: Gorgeous Realistic and Stylized Environments at 99% OFF!
+    topLink: humblebundle2
     bottomText: Learn Unity DOTS for MASSIVE Performance Boosts! (and make an RTS)
     bottomLink: dotscourse
-  lastDynamicHeaderTimestamp: 1744359087
+  lastDynamicHeaderTimestamp: 1744459539
   websiteLatestMessage:
     text: <a href="https://cmonkey.co/freecourses">Check out all my FREE courses!
       Click here!</a>
-  websiteLatestMessageTimestamp: 1744359087
+  websiteLatestMessageTimestamp: 1744459539
   websiteLatestVideos:
     videos:
-    - youTubeId: ZIg7VoD9ptI
-      title: The FUTURE of Unity in 2025 and BEYOND!
-    - youTubeId: W_XOZAWJF24
-      title: I made the MOST PROFITABLE Game as a Test!
-    - youTubeId: J0KMvH-yFmA
-      title: TOP 10 NEW Games, Made with Unity! (FEBRUARY 2025)
-    - youTubeId: DOSLOa7cnoE
-      title: I SHOULD have done this a long time ago, and YOU too!
-  websiteLatestVideosTimestamp: 1744359087
+    - youTubeId: aYKnB1OWuYA
+      title: TONS of AWESOME Assets up to 99% OFF! (Multiple Bundles and Spring Sales)
+    - youTubeId: zgJHRiounHs
+      title: The Problem of Making more MONEY with Assets than Games
+    - youTubeId: wejUWjCVW94
+      title: The 10 BEST Game Dev Beginner Projects to Make!
+    - youTubeId: 79an2JDe51g
+      title: NO MORE PROGRAMMING, let's do Pen Spinning instead!
+  websiteLatestVideosTimestamp: 1744459539
