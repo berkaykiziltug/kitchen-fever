@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentVersion: 1.01
   subtype: kitchenchaos
-  lastShownTimestamp: 1744558199
+  lastShownTimestamp: 1744656825
   lastUpdateResponse:
     version: 1.01
     versionUrl: https://unitycodemonkey.com
-  checkedLastUpdateTimestamp: 1744558199
+  checkedLastUpdateTimestamp: 1744656825
   lastQOTDResponse:
     questionId: 170
     questionText: 'Is this valid code?
@@ -29,26 +29,27 @@ MonoBehaviour:
     answerC: 
     answerD: 
     answerE: 
-  lastQotdTimestamp: 1744558199
+  lastQotdTimestamp: 1744656825
   lastDynamicHeaderResponse:
-    topImageUrl: https://codemonkeyexternal.blob.core.windows.net/external/Misc/humbleBundleEnvironmentsApr25.png
-    topText: Gorgeous Realistic and Stylized Environments at 99% OFF!
-    topLink: humblebundle2
+    topImageUrl: https://codemonkeyexternal.blob.core.windows.net/external/Misc/humbleApr25GUI.png
+    topText: Awesome Giant UI pack! Definitely get it to get a giant library of UI
+      elements 97% OFF!
+    topLink: humblebundle
     bottomText: Learn Unity DOTS for MASSIVE Performance Boosts! (and make an RTS)
     bottomLink: dotscourse
-  lastDynamicHeaderTimestamp: 1744558199
+  lastDynamicHeaderTimestamp: 1744656825
   websiteLatestMessage:
     text: <a href="https://cmonkey.co/freecourses">Check out all my FREE courses!
       Click here!</a>
-  websiteLatestMessageTimestamp: 1744558199
+  websiteLatestMessageTimestamp: 1744656825
   websiteLatestVideos:
     videos:
+    - youTubeId: TZtbhCoff9Y
+      title: I found a MAGICAL GitHub project! (FREE Desktop in Unity!)
     - youTubeId: aYKnB1OWuYA
       title: TONS of AWESOME Assets up to 99% OFF! (Multiple Bundles and Spring Sales)
     - youTubeId: zgJHRiounHs
       title: The Problem of Making more MONEY with Assets than Games
     - youTubeId: wejUWjCVW94
       title: The 10 BEST Game Dev Beginner Projects to Make!
-    - youTubeId: 79an2JDe51g
-      title: NO MORE PROGRAMMING, let's do Pen Spinning instead!
-  websiteLatestVideosTimestamp: 1744558199
+  websiteLatestVideosTimestamp: 1744656825
