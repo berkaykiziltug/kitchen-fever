@@ -12,6 +12,9 @@ public class GameInput : MonoBehaviour
    public event EventHandler OnInteractAlternateAction;
    public event EventHandler OnPauseAction;
 
+   public event EventHandler OnInteractAction;
+   public event EventHandler OnBindingRebind;
+
    public enum Binding
    {
       Move_Up,
@@ -69,6 +72,7 @@ public class GameInput : MonoBehaviour
    private void Interact_performed(InputAction.CallbackContext obj)
    {
       onInteractPerformed?.Invoke(this, EventArgs.Empty);
+      OnInteractAction?.Invoke(this, EventArgs.Empty);
    }
 
    public Vector3 GetMovementVectorNormalized()
@@ -149,6 +153,7 @@ public class GameInput : MonoBehaviour
 
             PlayerPrefs.SetString(PLAYER_PREFS_BINDINGS,playerInputActions.SaveBindingOverridesAsJson() );
             PlayerPrefs.Save();
+            OnBindingRebind?.Invoke(this, EventArgs.Empty);
          })
          .Start();
    }
